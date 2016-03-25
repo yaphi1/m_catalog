@@ -5,6 +5,8 @@
 !.gitignore
 !*.html
 !*.js
+!*.css
+!*.md
 # etc...
 
 # ...even if they are in subdirectories
