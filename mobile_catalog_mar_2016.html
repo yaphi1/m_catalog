@@ -730,9 +730,6 @@ YOUR WAY TO LANGUAGE
 	font-family: gothambook;
 }
 
-.light_yellow_text{
-	color: #ffeb8c;
-}
 
 
 
@@ -747,7 +744,7 @@ SIDEWAYS IPHONE
 
 .iphone_container{
 	width: 100%;
-	max-width: 600px;
+	max-width: 400px;
 	margin: 15px auto;
 	font-size: 0px;
 	position: relative;
@@ -896,20 +893,96 @@ SIDEWAYS IPHONE
 /****************************************************************
 IMMERSE YOURSELF
 *****************************************************************/
-.immerse_buttons{
+#immerse_buttons{
 	text-align: center;
 	font-size: 0px;
 }
 
-.immerse_buttons > div{
+#immerse_buttons > div{
 	background: rgba(33,33,33,0.4);
 	display: inline-block;
 	padding: 8px 12px;
 	margin: 0px 12px;
 }
 
+#immersion_slider{
+	position: relative;
+	padding-top: 56%;
+}
+
+@media (min-width: 435px){
+	#immersion_slider{
+		padding-top: 220px;
+	}
+}
+
+.immersion_slide{
+	opacity: 0;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+
+	-webkit-transition: opacity 0.7s;
+	transition: opacity 0.7s;
+}
+
+.immersion_slide:first-of-type{
+	opacity: 1;
+}
 
 
+#immersion_text_container{
+	text-align: center;
+	position: relative;
+}
+
+.immersion_blurb{
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+
+	-webkit-transition: all 0.7s;
+	transition: all 0.7s;
+}
+
+.immersion_blurb,
+.immersion_text_placeholder{
+	overflow: hidden;
+}
+
+.immersion_blurb p,
+.immersion_text_placeholder p
+{
+	max-width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.immersion_text_placeholder{
+	visibility: hidden;
+}
+
+.immersion_blurb:first-of-type{
+	opacity: 1;
+}
+
+.immersion_title{
+	color: #ffeb8c;
+
+	-webkit-transform: translateX(130px);
+	transform: translateX(130px);
+
+	-webkit-transition: all 0.7s;
+	transition: all 0.7s;
+}
+
+.immersion_active{
+	-webkit-transform: translateX(0px);
+	transform: translateX(0px);
+}
 
 
 
@@ -1483,32 +1556,95 @@ YOUR WAY TO [LANGUAGE]
 	</p>
 
 	
-	<div class="iphone_container">
-		<div class="iphone_scaler">
-			<div class="iphone_holder">
-				<div class="iphone_rim">
-					<div class="iphone_body">
-						<div class="iphone_camera"></div>
-						<div class="iphone_speaker"></div>
-						<div class="iphone_screen">
-							<!-- Put content here -->
-						</div>
-						<div class="iphone_button_rim">
-							<div class="iphone_button"></div>
+	<div id="immersion_slider">
+
+		<div class="immersion_slide">
+
+			<!-- iphone -->
+			<div class="iphone_container">
+				<div class="iphone_scaler">
+					<div class="iphone_holder">
+						<div class="iphone_rim">
+							<div class="iphone_body">
+								<div class="iphone_camera"></div>
+								<div class="iphone_speaker"></div>
+								<div class="iphone_screen">
+									<!-- Put content here -->
+								</div>
+								<div class="iphone_button_rim">
+									<div class="iphone_button"></div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
+
+		<div class="immersion_slide">
+
+			<!-- macbook -->
+			<div class="mac_container">
+				<div class="mac_scaler">
+					<div class="mac_holder">
+						<div class="mac_screen">
+							<div class="mac_camera"></div>
+							<div class="mac_screen_content">
+								<img src="http://m.rosettastone.com/assets/bg-logo.png" style="padding-top:23%; height:15%;">
+							</div>
+						</div>
+						<div class="mac_bottom">
+							<div class="mac_bottom_top_half">
+								<div class="mac_thumb_space"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
 	</div>
 
-	<h2 class="light_yellow_text">Immerse Yourself</h2>
-	<p class="center">
-		You'll match words and images, the way you learned your first language&mdash;with no translation.
-		<br><b>No brain-numbing memorization needed.</b>
-	</p>
+	<div id="immersion_text_container">
 
-	<div class="immerse_buttons">
+		<div class="immersion_blurb">
+			<h2 class="immersion_title immersion_active">Immerse Yourself</h2>
+			<p>
+				You'll match words and images, the way you learned your first language&mdash;with no translation.
+				<br><b>No brain-numbing memorization needed.</b>
+			</p>
+		</div>
+
+		<div class="immersion_blurb">
+			<h2 class="immersion_title">Time To Talk</h2>
+			<p>
+				<b>Video chats with native speakers</b> and online chats with fellow learners let you use your new words with new friends, live. You can also play specially-designed games to reinforce what you've learned.
+			</p>
+		</div>
+
+		<div class="immersion_blurb">
+			<h2 class="immersion_title">Be Understood</h2>
+			<p>
+				Our speech engine is <b>the most advanced on the market</b>, comparing your accent to native speakers' 100 times per second.
+			</p>
+		</div>
+
+
+
+		<!-- placeholder DON'T REMOVE -->
+		<div class="immersion_text_placeholder">
+			<h2 class="immersion_title">Time To Talk</h2>
+			<p>
+				Video chats with native speakers and online chats with fellow learners let you use your new words with new friends, live. You can also play specially-designed games to reinforce what you've learned.
+			</p>
+		</div>
+
+	</div>
+	
+
+	<div id="immerse_buttons">
 		<div>
 			<!-- left arrow -->
 			<svg width="18" height="30" viewBox="0 0 6 10" xmlns="http://www.w3.org/2000/svg">
@@ -1612,6 +1748,53 @@ BOTTOM CTA
 
 
 <script>
+
+
+
+
+var immerse_buttons = document.querySelectorAll('#immerse_buttons > div');
+immerse_buttons[0].onclick = prevImmersionSlide;
+immerse_buttons[1].onclick = nextImmersionSlide;
+
+var immerse_slides = document.getElementById('immersion_slider').querySelectorAll('.immersion_slide');
+var current_slide = 0;
+
+var immerse_blurbs = document.getElementById('immersion_text_container').querySelectorAll('.immersion_blurb');
+var immerse_titles = document.getElementById('immersion_text_container').querySelectorAll('.immersion_title');
+var immerse_paragraphs = document.getElementById('immersion_text_container').querySelectorAll('.immersion_blurb p');
+
+
+function changeSlide(increment){
+	// fade out current slide and move out current title
+	immerse_slides[current_slide].style.opacity = 0;
+	immerse_blurbs[current_slide].style.opacity = 0;
+	immerse_titles[current_slide].className = 'immersion_title';
+	
+	// increase or decrease slide counter
+	current_slide+=increment;
+	
+	// reset counter if it gets too high or low
+	if(current_slide>=immerse_slides.length){
+		current_slide = 0;
+	}
+	else if(current_slide < 0){
+		current_slide = immerse_slides.length - 1;
+	}
+	
+	// fade in new slide and bring in new title
+	immerse_slides[current_slide].style.opacity = 1;
+	immerse_blurbs[current_slide].style.opacity = 1;
+	immerse_titles[current_slide].className = 'immersion_title immersion_active';
+}
+
+function nextImmersionSlide(){
+	changeSlide(1);
+}
+
+function prevImmersionSlide(){
+	changeSlide(-1);
+}
+
 </script>
 </body>
 </html>
