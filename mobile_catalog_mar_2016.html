@@ -1218,6 +1218,73 @@ BOTTOM CTA
 	top: -1px;
 }
 
+
+
+
+
+
+
+/*********************************************************
+VIDEO OVERLAY
+**********************************************************/
+#video_overlay{
+	position: fixed;
+	z-index: 1000;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(33,33,33,0.9);
+	color: #fff;
+	display: none;
+	text-align: center;
+	overflow: scroll;
+}
+
+#close_video_overlay{
+	position: absolute;
+	right: 5%;
+	top: 20px;
+	cursor: pointer;
+}
+
+.overlay_x{
+	width: 30px;
+	height: 30px;
+
+	stroke: #fff;
+}
+
+#video_scaler{
+	width: 100%;
+	max-width: 900px;
+	margin: 60px auto 0px;
+	text-align: center;
+}
+
+#video_container{
+	background: #333;
+	display: inline-block;
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.6);
+
+	width: 100%;
+	height: 0px;
+	overflow: hidden;
+	padding-top: 56.25%;
+	position: relative;
+}
+
+#video_container iframe{
+	position: absolute;
+	display: block;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+}
+
+
+
 </style>
 
 </head>
@@ -1409,17 +1476,8 @@ LEARN [LANGUAGE] INTRO
 		There's also live interaction and real-time feedback to keep you making quick progress. And Rosetta Stone French is backed by over 20 years of success stories. Let's make yours the next one.
 	</p>
 
-	<!-- <div class="video_still_container">
-		<img src="./assets/demo_still.jpg">
-		<div class="play_button_positioner">
-			<div class="play_button_container">
-				<svg class="video_play_button">
-					<use xlink:href="#play_button_svg"></use>
-				</svg>
-			</div>
-		</div>
-	</div> -->
-	<div class="video_still_container">
+	
+	<div class="video_still_container click_for_video" data-video="how_it_works">
 		<img src="./assets/demo_still.jpg">
 		<svg class="video_play_button">
 			<use xlink:href="#play_button_svg"></use>
@@ -1759,7 +1817,7 @@ YOUR WAY TO [LANGUAGE]
 					</div>
 				</div>
 			</div>
-			
+
 		</div>
 
 		<div class="immersion_slide">
@@ -1878,7 +1936,7 @@ REVIEWS
 		<br>–Stephen
 	</div>
 
-	<div class="video_still_container">
+	<div class="video_still_container click_for_video" data-video="grace">
 		<img src="./assets/grace_still.jpg">
 		<svg class="video_play_button">
 			<use xlink:href="#play_button_svg"></use>
@@ -1927,53 +1985,129 @@ BOTTOM CTA
 </div>
 
 
+
+
+
+<!-- *********************************************************
+VIDEO OVERLAY
+********************************************************** -->
+
+<div id="video_overlay">
+	<div id="close_video_overlay">
+		<svg class="overlay_x">
+			<use xlink:href="#basic_x_svg"></use>
+		</svg>
+	</div>
+	
+	<div id="video_scaler">
+		<div id="video_container">ok</div>
+	</div>
+</div>
+
+
+
+
+
 <script>
 
 
 
 
-var immerse_buttons = document.querySelectorAll('#immerse_buttons > div');
-immerse_buttons[0].onclick = prevImmersionSlide;
-immerse_buttons[1].onclick = nextImmersionSlide;
+// ********************************
+// VIDEO OVERLAYS
+// ********************************
 
-var immerse_slides = document.getElementById('immersion_slider').querySelectorAll('.immersion_slide');
-var current_slide = 0;
-
-var immerse_blurbs = document.getElementById('immersion_text_container').querySelectorAll('.immersion_blurb');
-var immerse_titles = document.getElementById('immersion_text_container').querySelectorAll('.immersion_title');
-var immerse_paragraphs = document.getElementById('immersion_text_container').querySelectorAll('.immersion_blurb p');
-
-
-function changeSlide(increment){
-	// fade out current slide and move out current title
-	immerse_slides[current_slide].style.opacity = 0;
-	immerse_blurbs[current_slide].style.opacity = 0;
-	immerse_titles[current_slide].className = 'immersion_title';
-	
-	// increase or decrease slide counter
-	current_slide+=increment;
-	
-	// reset counter if it gets too high or low
-	if(current_slide>=immerse_slides.length){
-		current_slide = 0;
+(function(){
+	// show correct video
+	var vids = document.querySelectorAll('.click_for_video');
+	for(var i=0; i<vids.length; i++){
+		vids[i].onclick = showVideo;
 	}
-	else if(current_slide < 0){
-		current_slide = immerse_slides.length - 1;
+	function showVideo(){
+		var vid = this.getAttribute('data-video');
+
+		var youtube_id = {
+			how_it_works : 'imK17Pb3Yws',
+			delaine : 'KwFphr58e94',
+			grace : 'g6WEYqaMFsk'
+		};
+
+		// default to how it works video if requested video not available
+		var vid_code = youtube_id[vid] || youtube_id['how_it_works'];
+
+		var youtube_video = '<iframe src="http://www.youtube.com/embed/'+vid_code+'?rel=0&autoplay=1&iv_load_policy=3" frameborder="0" allowfullscreen></iframe>';
+		document.getElementById('video_container').innerHTML = youtube_video;
+
+		document.getElementById('video_overlay').style.display = 'block';
 	}
-	
-	// fade in new slide and bring in new title
-	immerse_slides[current_slide].style.opacity = 1;
-	immerse_blurbs[current_slide].style.opacity = 1;
-	immerse_titles[current_slide].className = 'immersion_title immersion_active';
-}
 
-function nextImmersionSlide(){
-	changeSlide(1);
-}
 
-function prevImmersionSlide(){
-	changeSlide(-1);
-}
+	// hide video
+	document.getElementById('close_video_overlay').onclick = hideVideo;
+	function hideVideo(){
+		document.getElementById('video_overlay').style.display = 'none';
+		
+		// vital to remove video from HTML; otherwise it can keep autoplaying in some situations
+		document.getElementById('video_container').innerHTML = '';
+	}
+
+})();
+
+
+
+
+
+
+
+// ********************************
+// IMMERSION SLIDER
+// ********************************
+(function(){
+
+	var immerse_buttons = document.querySelectorAll('#immerse_buttons > div');
+	immerse_buttons[0].onclick = prevImmersionSlide;
+	immerse_buttons[1].onclick = nextImmersionSlide;
+
+	var immerse_slides = document.getElementById('immersion_slider').querySelectorAll('.immersion_slide');
+	var current_slide = 0;
+
+	var immerse_blurbs = document.getElementById('immersion_text_container').querySelectorAll('.immersion_blurb');
+	var immerse_titles = document.getElementById('immersion_text_container').querySelectorAll('.immersion_title');
+	var immerse_paragraphs = document.getElementById('immersion_text_container').querySelectorAll('.immersion_blurb p');
+
+
+	function changeSlide(increment){
+		// fade out current slide and move out current title
+		immerse_slides[current_slide].style.opacity = 0;
+		immerse_blurbs[current_slide].style.opacity = 0;
+		immerse_titles[current_slide].className = 'immersion_title';
+		
+		// increase or decrease slide counter
+		current_slide+=increment;
+		
+		// reset counter if it gets too high or low
+		if(current_slide>=immerse_slides.length){
+			current_slide = 0;
+		}
+		else if(current_slide < 0){
+			current_slide = immerse_slides.length - 1;
+		}
+		
+		// fade in new slide and bring in new title
+		immerse_slides[current_slide].style.opacity = 1;
+		immerse_blurbs[current_slide].style.opacity = 1;
+		immerse_titles[current_slide].className = 'immersion_title immersion_active';
+	}
+
+	function nextImmersionSlide(){
+		changeSlide(1);
+	}
+
+	function prevImmersionSlide(){
+		changeSlide(-1);
+	}
+
+})();
 
 </script>
 </body>
