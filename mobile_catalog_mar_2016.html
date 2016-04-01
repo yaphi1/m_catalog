@@ -13,10 +13,11 @@ html {
 	-webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape while allowing user zoom */
 }
 
-button, select{
+button, select, input{
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border-radius: 0px;
+	font-family: gothambook, sans-serif;
 }
 
 button{
@@ -1285,6 +1286,97 @@ VIDEO OVERLAY
 
 
 
+
+
+
+
+/*********************************************************
+DEMO OVERLAY
+**********************************************************/
+#demo_overlay{
+	position: fixed;
+	z-index: 1000;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+
+	background-color: #fdba3d;
+	background-image: linear-gradient(#eabf2b,#e99a25);
+	color: #333;
+	display: none;
+	text-align: center;
+	overflow: scroll;
+
+	padding: 0px 16px;
+	box-sizing: border-box;
+}
+
+.demo_form_title{
+	font-family: gothamthin;
+	margin-top: 64px;
+}
+
+.demo_form_title span{
+	font-family: gothambook;
+}
+
+#demo_overlay input,
+#demo_dropdown{
+	padding: 16px;
+	border: 0px;
+	background-color: #fff;
+	font-size: 16px;
+	margin-bottom: 16px;
+	text-align: left;
+}
+
+#demo_overlay input,
+#demo_overlay button,
+.demo_privacy {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	max-width: 450px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.demo_privacy{
+	font-size: 12px;
+	margin-top: 16px;
+}
+
+.demo_privacy a{
+	color: #fff;
+}
+
+
+#demo_dropdown{
+	cursor: pointer;
+	position: relative;
+}
+
+.down_arrow{
+	position: absolute;
+	right: 8px;
+	top: 15px;
+}
+
+#close_demo_overlay{
+	position: absolute;
+	right: 5%;
+	top: 20px;
+	cursor: pointer;
+}
+
+#close_demo_overlay svg{
+	stroke: #333;
+}
+
+
+
+
 </style>
 
 </head>
@@ -1426,7 +1518,7 @@ MASTHEAD
 		<h2>
 			Start speaking French with the most powerful and intuitive language program on the planet.
 		</h2>
-		<a class="standard_button black_button" href="#">Try a Free Demo</a>
+		<a class="standard_button black_button click_for_demo" href="#">Try a Free Demo</a>
 
 		
 		<!-- macbook -->
@@ -1489,7 +1581,7 @@ LEARN [LANGUAGE] INTRO
 		Find out everything you need to know about Rosetta Stone in 2 minutes.
 	</p>
 	<div class="center">
-		<a href="#" class="standard_button more_text_button">
+		<a href="#" class="standard_button more_text_button click_for_demo">
 			Start the interactive demo
 		</a>
 	</div>
@@ -2008,7 +2100,74 @@ VIDEO OVERLAY
 
 
 
+
+<!-- *********************************************************
+DEMO OVERLAY
+********************************************************** -->
+
+<div id="demo_overlay">
+	<div id="close_demo_overlay">
+		<svg class="overlay_x">
+			<use xlink:href="#basic_x_svg"></use>
+		</svg>
+	</div>
+	
+	<h2 class="demo_form_title">
+		Ready for Your<br>
+		<span>Free Demo?</span>
+	</h2>
+	<div id="demo_dropdown">
+		<span>Spanish (Latin America)</span>
+		<div class="down_arrow">
+			<!-- down arrow -->
+			<svg width="25" height="25" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+				<polyline points="3,4.3 5,6.3 7,4.3" style="stroke:#1899d8; stroke-width:0.8; stroke-linejoin:round; stroke-linecap:round; fill:none;"></polyline>
+			</svg>
+		</div>
+	</div>
+	<input type="email" placeholder="Email address">
+	<button class="standard_button more_text_button black_button">Start Your Free Demo</button>
+	<div class="demo_privacy">
+		<div>Your privacy is important to us. We will not share your personal information with third parties without your consent.</div>
+		<div>
+			<a href="http://www.rosettastone.com/privacy" target="_blank">
+				View our privacy policy.
+			</a>
+		</div>
+	</div>
+</div>
+
+
+
+
 <script>
+
+
+
+
+
+
+// ********************************
+// DEMO OVERLAY
+// ********************************
+
+(function(){
+	// show correct video
+	var demo_buttons = document.querySelectorAll('.click_for_demo');
+	for(var i=0; i<demo_buttons.length; i++){
+		demo_buttons[i].onclick = showDemoForm;
+	}
+	function showDemoForm(){
+		document.getElementById('demo_overlay').style.display = 'block';
+	}
+
+	document.getElementById('close_demo_overlay').onclick = hideDemo;
+	function hideDemo(){
+		document.getElementById('demo_overlay').style.display = 'none';
+	}
+
+})();
+
 
 
 
