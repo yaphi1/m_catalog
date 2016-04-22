@@ -64,7 +64,7 @@ body{
 
 h1, h2{
 	line-height: 1.1;
-	font-family: gothamthin, sans-serif;
+	font-family: gothamlight, sans-serif;
 	/*font-weight: 100;*/
 	text-align: center;
 }
@@ -304,9 +304,10 @@ MACBOOK
 }
 
 .mac_screen_content{
-	background: #333;
+	background: #000;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 
 	text-align: center;
 }
@@ -731,7 +732,7 @@ YOUR WAY TO LANGUAGE
 }
 
 .yourway p{
-	font-family: gothamthin;
+	font-family: gothamlight;
 	font-size: 15px;
 }
 .yourway b{
@@ -863,6 +864,8 @@ SIDEWAYS IPHONE
 	border-radius: 0.63% / 1.176%;
 
 	font-size: 20px;
+	overflow: hidden;
+	text-align: center;
 }
 
 .iphone_button_rim{
@@ -1011,6 +1014,8 @@ SIDEWAYS IPAD
 	border-radius: 0.63% / 1.176%;
 
 	font-size: 20px;
+	overflow: hidden;
+	text-align: center;
 }
 /*
 625x439 - body
@@ -1320,7 +1325,7 @@ DEMO OVERLAY
 }
 
 .demo_form_title{
-	font-family: gothamthin;
+	font-family: gothamlight;
 	margin-top: 64px;
 }
 
@@ -1334,8 +1339,11 @@ DEMO OVERLAY
 	border: 0px;
 	background-color: #fff;
 	font-size: 16px;
-	margin-bottom: 16px;
 	text-align: left;
+}
+
+#demo_overlay input{
+	margin: 16px 0px;
 }
 
 #demo_overlay input,
@@ -1381,6 +1389,34 @@ DEMO OVERLAY
 	stroke: #333;
 }
 
+#demo_lang_list {
+	display: none;
+
+	background: #fff;
+	font-size: 16px;
+	padding: 8px 0px;
+	margin: 0px;
+	text-align: left;
+	list-style-type: none;
+	border-top: 1px solid #eee;
+}
+
+#demo_lang_list li{
+	padding: 8px 16px;
+	cursor: pointer;
+}
+
+#demo_email_error{
+	display: none;
+	font-size: 15px;
+	color: #800;
+	margin-bottom: 20px;
+}
+
+#email_success{
+	display: none;
+}
+
 
 
 
@@ -1388,7 +1424,6 @@ DEMO OVERLAY
 
 </head>
 <body>
-
 
 
 
@@ -1531,7 +1566,8 @@ MASTHEAD
 					<div class="mac_screen">
 						<div class="mac_camera"></div>
 						<div class="mac_screen_content">
-							<img src="http://m.rosettastone.com/assets/bg-logo.png" style="padding-top:23%; height:15%;">
+							<!-- <img src="http://m.rosettastone.com/assets/bg-logo.png" style="padding-top:23%; height:15%;"> -->
+							<img src="./assets/screen_generic.jpg" alt="Rosetta Stone product screenshot" style="width:100%;">
 						</div>
 					</div>
 					<div class="mac_bottom">
@@ -1603,7 +1639,7 @@ LEARN [LANGUAGE] INTRO
 
 	
 	<div class="video_still_container click_for_video" data-video="how_it_works">
-		<img src="./assets/demo_still.jpg">
+		<img src="./assets/demo_still.jpg" alt="">
 		<svg class="video_play_button">
 			<use xlink:href="#play_button_svg"></use>
 		</svg>
@@ -1635,7 +1671,7 @@ LEARN [LANGUAGE] INTRO
 PRODUCTS
 **********************************************************-->
 
-<div class="content_block goldbg">
+<div id="products_start_here" class="content_block goldbg">
 
 	<div class="product_container">
 		<div class="product_class_header">
@@ -1667,7 +1703,7 @@ PRODUCTS
 				</div>
 				<a href="#" class="standard_button add_to_cart">Add to Cart</a>
 				<div class="guarantee_container">
-					<img src="./assets/guarantee.png">
+					<img src="./assets/guarantee.png" alt="">
 					<div>30 Day, Money-Back Guarantee</div>
 				</div>
 			</div>
@@ -1706,7 +1742,7 @@ PRODUCTS
 				</div>
 				<a href="#" class="standard_button add_to_cart">Add to Cart</a>
 				<div class="guarantee_container">
-					<img src="./assets/guarantee.png">
+					<img src="./assets/guarantee.png" alt="">
 					<div>30 Day, Money-Back Guarantee</div>
 				</div>
 			</div>
@@ -1721,7 +1757,7 @@ PRODUCTS
 		</div>
 		<div class="product_info">
 			<div class="product_title">CD-ROM</div>
-			<img src="./assets/cd.svg" alt="" style="height:40px;">
+			<img src="./assets/cd.svg" alt="" style="height:40px;" alt="">
 			<div class="product_subtitle">
 				Learn on your computer
 			</div>
@@ -1746,7 +1782,7 @@ PRODUCTS
 				</div>
 				<a href="#" class="standard_button add_to_cart">Add to Cart</a>
 				<div class="guarantee_container">
-					<img src="./assets/guarantee.png">
+					<img src="./assets/guarantee.png" alt="">
 					<div>30 Day, Money-Back Guarantee</div>
 				</div>
 			</div>
@@ -1890,6 +1926,7 @@ YOUR WAY TO [LANGUAGE]
 								<div class="iphone_speaker"></div>
 								<div class="iphone_screen">
 									<!-- Put content here -->
+									<img src="./assets/slide_still_mobile.jpg" alt="" style="height:100%;">
 								</div>
 								<div class="iphone_button_rim">
 									<div class="iphone_button"></div>
@@ -1915,6 +1952,7 @@ YOUR WAY TO [LANGUAGE]
 								</div>
 								<div class="ipad_screen">
 									<!-- Put content here -->
+									<img src="./assets/slide_still_tablet.jpg" alt="" style="height:100%;">
 								</div>
 								<div class="ipad_camera"></div>
 							</div>
@@ -1934,7 +1972,8 @@ YOUR WAY TO [LANGUAGE]
 						<div class="mac_screen">
 							<div class="mac_camera"></div>
 							<div class="mac_screen_content">
-								<img src="http://m.rosettastone.com/assets/bg-logo.png" style="padding-top:23%; height:15%;">
+								<!-- <img src="http://m.rosettastone.com/assets/bg-logo.png" style="padding-top:23%; height:15%;"> -->
+								<img src="./assets/slide_still_desktop.jpg" alt="" style="width:100%;">
 							</div>
 						</div>
 						<div class="mac_bottom">
@@ -2085,7 +2124,7 @@ BOTTOM CTA
 			<sup>$</sup><span class="bottom_price">199</span>
 		</div>
 		
-		<a class="standard_button" href="#">Shop Now</a>
+		<a class="standard_button shop_now_button" href="#products_start_here">Shop Now</a>
 	</div>
 </div>
 
@@ -2129,17 +2168,33 @@ DEMO OVERLAY
 		Ready for Your<br>
 		<span>Free Demo?</span>
 	</h2>
-	<div id="demo_dropdown">
-		<span>Spanish (Latin America)</span>
-		<div class="down_arrow">
-			<!-- down arrow -->
-			<svg width="25" height="25" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-				<polyline points="3,4.3 5,6.3 7,4.3" style="stroke:#1899d8; stroke-width:0.8; stroke-linejoin:round; stroke-linecap:round; fill:none;"></polyline>
-			</svg>
+	<div id="demo_form">
+		<div id="demo_dropdown">
+			<span id="demo_lang_selected" data-lang="esp">Spanish (Latin America)</span>
+			<div class="down_arrow">
+				<!-- down arrow -->
+				<svg id="demo_arrow_svg" width="25" height="25" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
+					<polyline points="3,4.3 5,6.3 7,4.3" style="stroke:#1899d8; stroke-width:0.8; stroke-linejoin:round; stroke-linecap:round; fill:none;"></polyline>
+				</svg>
+			</div>
 		</div>
+		<ul id="demo_lang_list">
+			<li data-lang="fra">French</li>
+			<li data-lang="ita">Italian</li>
+			<li data-lang="deu">German</li>
+			<li data-lang="esp">Spanish (Latin America)</li>
+			<li data-lang="eng">English (American)</li>
+		</ul>
+		<input id="demo_email" type="email" placeholder="Email address">
+		<div id="demo_email_error">
+			Please enter a valid email and check the spelling.
+		</div>
+		<button id="start_demo" class="standard_button more_text_button black_button">Start Your Free Demo</button>
 	</div>
-	<input type="email" placeholder="Email address">
-	<button class="standard_button more_text_button black_button">Start Your Free Demo</button>
+	<div id="email_success">
+		Success.
+		<br>Your demo will start now.
+	</div>
 	<div class="demo_privacy">
 		<div>Your privacy is important to us. We will not share your personal information with third parties without your consent.</div>
 		<div>
@@ -2153,7 +2208,114 @@ DEMO OVERLAY
 
 
 
+
+
+<script src="./js/jquery.js"></script>
+
 <script>
+
+
+
+
+
+// *************************************************
+// BRITEVERIFY EMAIL VERIFICATION
+// *************************************************
+(function(){
+	function get_token(){
+		window.briteverifyToken = false;
+
+		var form_token = '4047df1c-5078-4e96-b335-f61aa2b92891'; // public key
+		var url = 'https://forms-api-v1.briteverify.com/api/submissions/view.json?callback=getBriteverifyToken&form_token='+form_token+'&_='+Date.now();
+
+		// append script to body to get cross-domain jsonp data
+		var script = document.createElement('script');
+		script.src = url;
+		document.body.appendChild(script);
+		
+		window.getBriteverifyToken = function(data){
+			// console.log(data);
+			// console.log('token: '+data.token);
+			
+			window.briteverifyToken = data.token;
+
+			delete window.getBriteverifyToken;
+			document.body.removeChild(script);
+		}
+	}
+	// if the demo hasn't already been taken, get an email verification token
+	if(!document.cookie.match(/demotaken/i)){
+		get_token();
+	}
+})();
+
+function verify_real_email(email,success,failure){
+	if(!success){success = function(){};}
+	if(!failure){failure = function(){};}
+	if(window.briteverifyToken){
+
+		var token = window.briteverifyToken;
+		var url = 'https://forms-api-v1.briteverify.com/api/submissions/verify.json?callback=briteverify&form_token=4047df1c-5078-4e96-b335-f61aa2b92891&token='+token+'&email='+email+'&_='+Date.now();
+
+		var script = document.createElement('script');
+		script.src = url;
+		document.body.appendChild(script);
+		
+		// if the script url doesn't work (maybe they changed the api)
+		script.onerror = function(e){
+			// console.log('onerror');
+			// console.log(e);
+
+			// ignore verification and move on
+			success();
+		};
+		// script.onload = function(){this.remove();}
+
+		window.briteverify = function(data){
+			try{
+				// console.log(data);
+				// console.log('validity status: '+data.status);
+				
+				// if email is valid
+				if(data.status!=='invalid'){
+					success();
+				}
+				// if email is invalid
+				else{
+					// error handling
+					failure();
+				}
+
+				document.body.removeChild(script);
+			}
+			catch(e){
+				// if error, ignore verification and move on
+				// console.log('jsonp callback error');
+
+				success();
+			}
+			delete window.briteverify;
+		}
+	}
+	else{
+		// if no token, ignore verification and move on
+		// console.log('no token');
+
+		success();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2165,7 +2327,7 @@ DEMO OVERLAY
 // ********************************
 
 (function(){
-	// show correct video
+	// show demo form when buttons are clicked
 	var demo_buttons = document.querySelectorAll('.click_for_demo');
 	for(var i=0; i<demo_buttons.length; i++){
 		demo_buttons[i].onclick = showDemoForm;
@@ -2186,15 +2348,248 @@ DEMO OVERLAY
 
 
 // ********************************
+// DEMO DROPDOWN
+// ********************************
+
+(function(){
+	var dropdown = document.getElementById('demo_dropdown');
+	var $langlist = $('#demo_lang_list');
+	var demo_lang_selected = document.getElementById('demo_lang_selected');
+
+	dropdown.onclick = function(){
+		$langlist.slideToggle();
+	};
+
+	$langlist.find('li').on('click',function(){
+		demo_lang_selected.innerHTML = this.innerHTML;
+
+		var lang = this.getAttribute('data-lang');
+		demo_lang_selected.setAttribute('data-lang', lang);
+		
+		$langlist.slideUp();
+	});
+
+})();
+
+
+
+
+// ********************************
+// DEMO SUBMIT
+// ********************************
+
+
+// if user already took demo, remove email field and adjust accordingly
+if(document.cookie.match(/demotaken/i)){
+	document.getElementById('demo_email').style.display = 'none';
+	document.getElementById('start_demo').style.marginTop = '10px';
+}
+
+function validEmailFormat(email){
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function showError(){
+	document.getElementById('demo_email').style.border = '3px solid red';
+	document.getElementById('demo_email_error').style.display = 'block';
+}
+function hideError(){
+	document.getElementById('demo_email').style.border = 'none';
+	document.getElementById('demo_email_error').style.display = 'none';
+}
+
+function submitDemo(){
+	var lang = document.getElementById('demo_lang_selected').getAttribute('data-lang');
+
+	// if demo already taken, skip email and start demo
+	if(document.cookie.match(/demotaken/i)){
+		startDemo(lang);
+		return false;
+	}
+
+	var email = document.getElementById('demo_email').value;
+
+	// first check email format
+	if(!validEmailFormat(email)){
+		showError();
+	}
+	// if good format, check if email really exists
+	else{
+		verify_real_email(email,success,failure);
+	}
+
+	
+	// handle successful form submission
+	function success(){
+		hideError();
+
+		// submit email to Responsys
+		submitToEC(email, lang, function(){
+
+			// start demo for correct language (after email success)
+			startDemo(lang);
+		});
+	}
+
+	// handle failed form submission
+	function failure(){
+		showError();
+	}
+
+
+	function startDemo(lang){
+		var mobile_lang_map = {
+			fra: 'french',
+			esp: 'spanish',
+			ita: 'italian',
+			deu: 'german'
+		}
+
+		// show old demo for eng
+		var demo_url = 'http://resources.rosettastone.com/CDN/us/rs-i-demo-6/?lang=en-en';
+		
+		// show new demo for FIGS
+		if(lang!=='eng'){
+			demo_url = 'http://m.rosettastone.com/demo/?lang='+mobile_lang_map[lang];
+		}
+
+		// go to demo
+		window.location.href = demo_url;
+	}
+}
+
+document.getElementById('start_demo').onclick = submitDemo;
+
+
+
+
+
+
+
+
+
+// This function will submit the email to our email collection system
+function submitToEC(email, lang, callback) {
+
+	callback = callback || function(){};
+	
+	var cid = window.location.href.search(/cid/i)>=1 ?
+				window.location.href.replace(/cid/i,'cid').split('cid=')[1].split('&')[0]
+				:'';
+
+	var data = {
+		email: email,
+		demo_lang: lang,
+		cis_name: 'Mobile Demo',
+		website: 'US_WEBSITE',
+		newsletter_type: 'Mid_Catalog_LearnPage',
+		form_type: 'demo',
+		demo_type : 'Demo_Mobile',
+		cid: cid,
+		form_url: window.location.href
+	}
+
+	var baseURL = (window.location.href.match(/(\.stg\.)|(\.local)|(file\:)/i) ?
+		'http://www.stg' :
+		'http://www')
+		+ '.rosettastone.com/?p_p_id=rosettaajaxsubmit_WAR_rosettaajaxsubmitportlet&p_p_lifecycle=2&redirect2mobile=no';
+
+	var request = $.ajax({
+		url: baseURL,      
+		type: "POST",
+		data: data 
+	});
+
+	request.done(function(msg) {
+		
+		// ***********************************************
+		// IF EMAIL SUBMISSION IS SUCCESSFUL
+		// ************************************************
+		if(msg['return_code'] == true){
+
+			// trigger email sign-up event so analytics can hook into it
+			$(document).trigger('demo_email', {
+				version: 'm1'
+				,version_description: 'mobile_demo_2015'
+				,email: email
+			});
+
+			// this is the language format evar7 wants
+			var evar7_langs = {
+				'fra' : 'french',
+				'deu' : 'german',
+				'ita' : 'italian',
+				'eng' : 'english(american)',
+				'esp' : 'spanish(latin america)',
+
+				'ara' : 'arabic',
+				'chi' : 'chinese(mandarin)',
+				'dar' : 'dari',
+				'ned' : 'dutch',
+				'ebr' : 'english(british)',
+				'tgl' : 'filipino(tagalog)',
+				'grk' : 'greek',
+				'heb' : 'hebrew',
+				'hin' : 'hindi',
+				'ind' : 'indonesian',
+				'gle' : 'irish',
+				'jpn' : 'japanese',
+				'kor' : 'korean',
+				'lat' : 'latin',
+				'pas' : 'pashto',
+				'far' : 'persian(farsi)',
+				'pol' : 'polish',
+				'por' : 'portuguese(brazil)',
+				'rus' : 'russian',
+				'esc' : 'spanish(spain)',
+				'kis' : 'swahili',
+				'sve' : 'swedish',
+				'tur' : 'turkish',
+				'urd' : 'urdu',
+				'vie' : 'vietnamese'
+			};
+
+			// trigger analytics evar7 to show which language
+			$(document).trigger('demo_language', {language: evar7_langs[lang], lang_code: lang});
+
+
+			// set cookie to show demo was taken (expires in 30 days)
+			var exp = new Date((new Date()).getTime() + 1000*60*60*24*30).toUTCString();
+			document.cookie = 'demotaken=true; expires='+exp+'; path=/; domain=.rosettastone.com';
+
+			// hide email form
+			document.getElementById('demo_form').style.display = 'none';
+
+			// show success text
+			document.getElementById('email_success').style.display = 'block';
+
+			// give a couple of seconds for people to see success message while analytics data gets sent
+			setTimeout(callback, 2000);
+		}
+	});
+}
+
+
+
+
+
+
+
+
+
+// ********************************
 // VIDEO OVERLAYS
 // ********************************
 
 (function(){
-	// show correct video
+	
+	// show correct video depending what is clicked
 	var vids = document.querySelectorAll('.click_for_video');
 	for(var i=0; i<vids.length; i++){
 		vids[i].onclick = showVideo;
 	}
+	
 	function showVideo(){
 		var vid = this.getAttribute('data-video');
 
@@ -2280,6 +2675,24 @@ DEMO OVERLAY
 	}
 
 })();
+
+
+
+
+
+// **********************************************************************
+// SMOOTH SCROLL
+// ***********************************************************************
+function smoothScrollTo(scrolltargetid){
+	$('html,body').animate({scrollTop : document.getElementById(scrolltargetid).getBoundingClientRect().top + window.scrollY}, 'fast');
+}
+
+
+// shop now button should scroll to buy section
+$('.shop_now_button').on('click',function(){
+	smoothScrollTo('products_start_here');
+	return false;
+});
 
 </script>
 </body>
